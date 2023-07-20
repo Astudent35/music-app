@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Music App</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>My Music App</h1>
+  <form action="/add" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+    <label for="artist">Artist:</label>
+    <input type="text" id="artist" name="artist" required>
+    <button type="submit">Add Song</button>
+  </form>
+
+  <form action="/simulate-plays" method="GET">
+    <button type="submit">Simulate Song Plays</button>
+  </form>
+
+  <div id="playlist">
+    <h2>Playlist</h2>
+    <% if (songs.length > 0) { %>
+      <ol>
+        <% songs.forEach((song) => { %>
+          <li><%= song.title %> - <%= song.artist %> (Play Count: <%= song.playCount %>)</li>
+        <% }); %>
+      </ol>
+    <% } else { %>
+      <p>No songs in the playlist yet.</p>
+    <% } %>
+  </div>
+</body>
+</html>
